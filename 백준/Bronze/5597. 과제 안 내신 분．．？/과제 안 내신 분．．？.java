@@ -1,28 +1,19 @@
 import java.io.*;
-import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        int[] student = new int[30];
-        for (int i = 0; i < 30; i++) {
-            student[i] = i + 1;
-        }
-        int[] submit = new int[28];
-        boolean[] isSubmitted = new boolean[31];
+        boolean[] isSubmitted = new boolean[31]; // index 1~30 사용
+
         for (int i = 0; i < 28; i++) {
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            submit[i] = Integer.parseInt(st.nextToken());
-            isSubmitted[submit[i]] = true;
+            int n = Integer.parseInt(br.readLine());
+            isSubmitted[n] = true;
         }
+
         for (int i = 1; i <= 30; i++) {
             if (!isSubmitted[i]) {
-                bw.write(i + "\n");
+                System.out.println(i); // BufferedWriter 대신 간단히 사용 가능
             }
         }
-        bw.flush();
-        bw.close();
-        br.close();
     }
 }
